@@ -30,8 +30,10 @@ public class Movie {
 
     public void wordWrapPlot() {
         final int WRAP_LENGTH = 60;
-        String wrapped = "", line;
-        int lineStart = -1, lineEnd;
+        String wrapped = "";
+        String line;
+        int lineStart = -1;
+        int lineEnd;
 
         if (Plot == null || !Plot.contains(" ")) {
             Plot = "\nNo plot summary available.";
