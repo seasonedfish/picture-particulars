@@ -6,7 +6,7 @@ package pparticulars;
  * @author Fisher
  */
 public class Movie {
-    // Fields must unfortunately be capitalized to match the OMDb pparticulars.API json
+    // Fields must unfortunately be capitalized to match the OMDb API json
     private String Title;
     private String Year;
     private String Type;
@@ -28,6 +28,9 @@ public class Movie {
         Ratings = ratings;
     }
 
+    /**
+     * Wraps words of the plot so that no line is wider than <code>WRAP_LENGTH</code>.
+     */
     public void wordWrapPlot() {
         final int WRAP_LENGTH = 60;
         String wrapped = "";
