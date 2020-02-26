@@ -1,11 +1,19 @@
+package pparticulars;
+
 /**
  * A class to represent a show or movie.
  *
  * @author Fisher
  */
 public class Movie {
-    // Fields must unfortunately be capitalized to match the OMDb API json
-    private String Title, Year, Type, Rated, Genre, Plot, imdbID;
+    // Fields must unfortunately be capitalized to match the OMDb pparticulars.API json
+    private String Title;
+    private String Year;
+    private String Type;
+    private String Rated;
+    private String Genre;
+    private String Plot;
+    private String imdbID;
     private Rating[] Ratings;
 
     public Movie(String title, String year, String type, String rated,
@@ -45,7 +53,7 @@ public class Movie {
         }
     }
 
-    String getImdbID() {
+    public String getImdbID() {
         return imdbID;
     }
 

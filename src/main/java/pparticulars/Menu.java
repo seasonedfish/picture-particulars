@@ -1,7 +1,14 @@
+package pparticulars;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,16 +18,16 @@ import java.util.Objects;
 
 /**
  * Main menu of picture-particulars
+ *
  * @author Fisher
  */
 public class Menu {
-    private static boolean plot = true;
-    private static final String API_KEY = API.API_KEY; // replace with your OMDb API key
+    private static final String API_KEY = API.API_KEY; // replace with your OMDb pparticulars.API key
     private static Movie movie;
     private static CommandLine commandLine;
 
 
-    public static void main(String [] args) throws ParseException {
+    public static void main(String[] args) throws ParseException {
         Gson gson = new Gson();
         commandLine = initializeCommandLine(args);
         URL url = formURL(commandLine.getOptionValue("query"));
@@ -32,7 +39,7 @@ public class Menu {
         } catch (NullPointerException | JsonSyntaxException e) {
             System.out.println("Show or movie not found.");
         } catch (JsonParseException e) {
-            System.out.println("An API error occurred.");
+            System.out.println("An pparticulars.API error occurred.");
         } catch (IOException e) {
             System.out.println("Connection failed—make sure you are connected to the Internet.");
         }
@@ -54,9 +61,10 @@ public class Menu {
     }
 
     /**
-     * Generates the OMDb API URL from a movie or show title.
+     * Generates the OMDb pparticulars.API URL from a movie or show title.
+     *
      * @param query a movie or show title
-     * @return the OMDb API URL
+     * @return the OMDb pparticulars.API URL
      */
     private static URL formURL(String query) {
         String urlString = "https://www.omdbapi.com/?apikey=" + API_KEY;
