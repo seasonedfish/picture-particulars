@@ -24,8 +24,8 @@ hs_err_pid*
 # IntelliJ files
 /.idea/
 
-# pparticulars.API key
-/src/main/java/pparticulars.API.java
+# API key
+/src/main/java/pparticulars/API.java
 
 # Additional
 /picture-particulars.iml
