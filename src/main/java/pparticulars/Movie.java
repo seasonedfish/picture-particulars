@@ -24,6 +24,8 @@
  */
 package pparticulars;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * A class to represent a show or movie.
  *
@@ -31,25 +33,32 @@ package pparticulars;
  */
 public class Movie {
     // Fields must unfortunately be capitalized to match the OMDb API json
-    private String Title;
-    private String Year;
-    private String Type;
-    private String Rated;
-    private String Genre;
-    private String Plot;
+    @SerializedName("Title")
+    private String title;
+    @SerializedName("Year")
+    private String year;
+    @SerializedName("Type")
+    private String type;
+    @SerializedName("Rated")
+    private String rated;
+    @SerializedName("Genre")
+    private String genre;
+    @SerializedName("Plot")
+    private String plot;
     private String imdbID;
-    private Rating[] Ratings;
+    @SerializedName("Ratings")
+    private Rating[] ratings;
 
     public Movie(String title, String year, String type, String rated,
                  String genre, String plot, String imdb, Rating[] ratings) {
-        Title = title;
-        Year = year;
-        Type = type;
-        Rated = rated;
-        Genre = genre;
-        Plot = plot;
+        this.title = title;
+        this.year = year;
+        this.type = type;
+        this.rated = rated;
+        this.genre = genre;
+        this.plot = plot;
         imdbID = imdb;
-        Ratings = ratings;
+        this.ratings = ratings;
     }
 
     /**
@@ -62,23 +71,23 @@ public class Movie {
         int lineStart = -1;
         int lineEnd;
 
-        if (Plot == null || !Plot.contains(" ")) {
-            Plot = "\nNo plot summary available.";
+        if (plot == null || !plot.contains(" ")) {
+            plot = "\nNo plot summary available.";
         }
-        if (Plot.length() > WRAP_LENGTH) {
+        if (plot.length() > WRAP_LENGTH) {
             // concatenates all lines besides last line
             do {
-                lineEnd = Plot.lastIndexOf(" ", lineStart + WRAP_LENGTH);
-                line = Plot.substring(lineStart + 1, lineEnd); // skips the space
+                lineEnd = plot.lastIndexOf(" ", lineStart + WRAP_LENGTH);
+                line = plot.substring(lineStart + 1, lineEnd); // skips the space
                 wrapped = String.join("\n", wrapped, line);
                 lineStart = lineEnd;
-            } while (lineEnd != Plot.lastIndexOf(" "));
+            } while (lineEnd != plot.lastIndexOf(" "));
 
             // concatenates last line
-            line = Plot.substring(lineStart);
+            line = plot.substring(lineStart);
             wrapped = wrapped.concat(line);
 
-            Plot = wrapped;
+            plot = wrapped;
         }
     }
 
@@ -88,13 +97,13 @@ public class Movie {
 
     @Override
     public String toString() {
-        String returnString = Title + " (" + Year + " " + Type + ")"
-                + "\n" + "Rated: " + Rated
-                + "\n" + "Genre: " + Genre
-                + "\n" + Plot
+        String returnString = title + " (" + year + " " + type + ")"
+                + "\n" + "Rated: " + rated
+                + "\n" + "Genre: " + genre
+                + "\n" + plot
                 + "\n";
 
-        for (Rating r : Ratings) {
+        for (Rating r : ratings) {
             returnString = String.join("\n", returnString, r.toString());
         }
         return returnString;
@@ -106,17 +115,19 @@ public class Movie {
      * @author Fisher
      */
     static class Rating {
-        private String Source;
-        private String Value;
+        @SerializedName("Source")
+        private String source;
+        @SerializedName("Value")
+        private String value;
 
         Rating(String source, String value) {
-            Source = source;
-            Value = value;
+            this.source = source;
+            this.value = value;
         }
 
         @Override
         public String toString() {
-            return Source + ": " + Value;
+            return source + ": " + value;
         }
     }
 }
