@@ -18,19 +18,17 @@ public class Movie {
     private String genre;
     @SerializedName("Plot")
     private String plot;
-    private String imdbID;
     @SerializedName("Ratings")
     private Rating[] ratings;
 
     public Movie(String title, String year, String type, String rated,
-                 String genre, String plot, String imdb, Rating[] ratings) {
+                 String genre, String plot, Rating[] ratings) {
         this.title = title;
         this.year = year;
         this.type = type;
         this.rated = rated;
         this.genre = genre;
         this.plot = plot;
-        imdbID = imdb;
         this.ratings = ratings;
     }
 
@@ -62,10 +60,6 @@ public class Movie {
 
             plot = wrapped;
         }
-    }
-
-    public String getImdbID() {
-        return imdbID;
     }
 
     @Override
