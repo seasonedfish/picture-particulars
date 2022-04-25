@@ -4,11 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * A class to represent a show or movie.
- *
- * @author Fisher
  */
 public class Movie {
-    // Fields must unfortunately be capitalized to match the OMDb API json
     @SerializedName("Title")
     private String title;
     @SerializedName("Year")
@@ -87,8 +84,6 @@ public class Movie {
 
     /**
      * A class to represent a show or movie's rating.
-     *
-     * @author Fisher
      */
     static class Rating {
         @SerializedName("Source")

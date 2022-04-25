@@ -18,8 +18,6 @@ import java.util.Objects;
 
 /**
  * Main menu of picture-particulars.
- *
- * @author Fisher
  */
 public class Menu {
     private static final String API_KEY = API.API_KEY; // replace with your OMDb API key
